@@ -1,0 +1,5 @@
+image: tamuctf/shell:latest
+
+test:
+  script:
+    - "./tests/entry.sh"

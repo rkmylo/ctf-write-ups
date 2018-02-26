@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ request.script_root }}/static/admin/css/vendor/codemirror.min.css">
+    <style>
+    .row-fluid { margin: 25px; padding-bottom: 25px; }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="row">
+    {% for error in errors %}
+        <div class="large-8 large-centered columns">
+            <div data-alert class="alert-box alert radius centered text-center">
+                <span>{{ error }}</span>
+                <a href="#" class="close">×</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <form id="page-edit" method="POST">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h3>Route: </h3>
+                <p class="help-block">This is the URL route that your page will be at (e.g. /page)</p>
+                <input name='nonce' type='hidden' value="{{ nonce }}">
+                <input class="form-control radius" id="route" type="text" name="route" value="{% if page is defined %}{{ page.route }}{% endif %}" placeholder="Route">
+            </div>
+        </div>
+        <br>
+        <div class="row-fluid">
+            <div class="col-md-12">
+                <h3>Content: </h3>
+                <p class="help-block">This is the HTML content of your page</p>
+                <textarea id="admin-pages-editor" name="html">{% if page is defined %}{{ page.html }}{% endif %}</textarea><br>
+                <button class="btn btn-theme btn-outlined create-challenge pull-right">
+                    {% if page is defined %}
+                        Update
+                    {% else %}
+                        Create
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ request.script_root }}/static/admin/js/vendor/codemirror.min.js"></script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("admin-pages-editor"), {
+        lineNumbers: true,
+        lineWrapping: true,
+        mode: "xml",
+        htmlMode: true,
+        theme: 'elegant'
+    });
+
+    $('#page-edit').submit(function (e){
+        $(this).attr('action', '{{ request.script_root }}/admin/pages/'+$('#route').val());
+    });
+</script>
+{% endblock %}

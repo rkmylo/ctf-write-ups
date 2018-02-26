@@ -1,0 +1,6 @@
+image: tamuctf/nginx:latest
+
+test:
+  script:
+    - "./tests/entry.sh"
+

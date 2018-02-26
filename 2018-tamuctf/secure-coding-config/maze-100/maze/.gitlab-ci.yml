@@ -1,0 +1,5 @@
+image: tamuctf/maze:latest
+
+test:
+  script:
+    - "./tests/entry.sh"

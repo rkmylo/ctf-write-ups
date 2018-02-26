@@ -1,0 +1,6 @@
+image: tamuctf/sql:latest
+
+test:
+  script:
+    - "./tests/entry.sh"
+
