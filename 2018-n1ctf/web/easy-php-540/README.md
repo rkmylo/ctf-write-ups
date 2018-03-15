@@ -62,7 +62,7 @@ After reading the source we have the following layout for the database.
 | username      | varchar |       |---| userid    | int           | FK
 | password      | varchar |           | username  | varchar       |
 | ip            | varchar |           | signature | varchar       |
-| is_admin      | bool    |           | mood      | int           |
+| is_admin      | bool    |           | mood      | varchar       |
 | allow_diff_ip | bool    |           -----------------------------
 ---------------------------
 ```
