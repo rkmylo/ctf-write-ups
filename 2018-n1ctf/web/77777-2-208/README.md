@@ -4,7 +4,7 @@
 > 
 > http://47.52.137.90:20000
 
-The task was quite similar to [../77777-104/README.md](77777) with some small differences.
+The task was quite similar to [77777](../77777-104/README.md) with some small differences.
 
 The About tab has changed a bit.
 
